@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Cambiar , por . en decimales
 sed 's/\,/./g' estacion1.csv > estacion1a.csv
 sed 's/\,/./g' estacion2.csv > estacion2a.csv
@@ -18,3 +19,8 @@ cat estacion1c.csv estacion2c.csv estacion3c.csv estacion4c.csv > estacion1234.c
 
 #se instala libreria para consultas sql
 sudo apt-get install -y csvkit
+=======
+
+>>>>>>> 04ea38605410e3d4337ea5206b35f5a9112800ba
+
+jjjj
