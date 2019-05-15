@@ -19,26 +19,28 @@ cat estacion1c.csv estacion2c.csv estacion3c.csv estacion4c.csv > estacion1234.c
 sed 's|\/|-|g' estacion1234.csv > estacion1234a.csv
 #Modificar año para AA
 sed 's|-\([0-9]*\),|-0\1,|g' estacion1234a.csv > estacion1234b.csv
-
+#Modificar año para AAAA
 sed 's|-\([0-9]*\),|-20\1,|g' estacion1234b.csv > estacion1234c.csv
 
 #Modificar mes para MM
 sed 's|-\([0-9]*\)-|-0\1-|g' estacion1234c.csv > estacion1234d.csv
 
-#separar dd mm aaaa en columnas
+#separar DD MM AAAA en columnas
 sed 's|-|,|g' estacion1234d.csv > estacion1234e.csv
 
+#Renombrar encabezado archivo
 sed 's|FECHA,|ESTACION,DIA,MES,YEAR,|g' estacion1234e.csv >estacion1234f.csv 
 
 #consultas SQL
 csvsql --query 'SELECT ESTACION, MES, avg(VEL) 
-from estacion1234f.csv GROUP BY ESTACION, MES' estacion1234f.csv > velocidad-por-mes.csv
+from estacion1234f GROUP BY ESTACION, MES' estacion1234f.csv > velocidad-por-mes.csv
 
 csvsql --query 'SELECT ESTACION, MES, avg(VEL) 
-from estacion1234f.csv GROUP BY ESTACION, MES' estacion1234f.csv > velocidad-por-mes.csv
+from estacion1234f GROUP BY ESTACION, MES' estacion1234f.csv > velocidad-por-mes.csv
 
 csvsql --query 'SELECT ESTACION, YEAR, avg(VEL) 
-from estacion1234f.csv GROUP BY ESTACION, YEAR' estacion1234f.csv > velocidad-por-ano.csv
+from estacion1234f GROUP BY ESTACION, YEAR' estacion1234f.csv > velocidad-por-ano.csv
 
 csvsql --query 'SELECT ESTACION, HHMMSS, avg(VEL) 
-from estacion1234f.csv GROUP BY ESTACION, HHMMSS' estacion1234f.csv > velocidad-por-hora.csv
+from estacion1234f GROUP BY ESTACION, HHMMSS' estacion1234f.csv > velocidad-por-hora.csv
+
