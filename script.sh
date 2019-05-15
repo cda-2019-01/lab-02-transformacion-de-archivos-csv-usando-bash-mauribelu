@@ -1,4 +1,4 @@
-
+#!/bin/bash
 #Cambiar , por . en decimales
 sed 's/\,/./g' estacion1.csv > estacion1a.csv
 sed 's/\,/./g' estacion2.csv > estacion2a.csv
@@ -35,12 +35,14 @@ sed 's|FECHA,|ESTACION,DIA,MES,YEAR,|g' estacion1234e.csv >estacion1234f.csv
 csvsql --query 'SELECT ESTACION, MES, avg(VEL) 
 from estacion1234f GROUP BY ESTACION, MES' estacion1234f.csv > velocidad-por-mes.csv
 
-csvsql --query 'SELECT ESTACION, MES, avg(VEL) 
-from estacion1234f GROUP BY ESTACION, MES' estacion1234f.csv > velocidad-por-mes.csv
-
 csvsql --query 'SELECT ESTACION, YEAR, avg(VEL) 
 from estacion1234f GROUP BY ESTACION, YEAR' estacion1234f.csv > velocidad-por-ano.csv
 
 csvsql --query 'SELECT ESTACION, HHMMSS, avg(VEL) 
 from estacion1234f GROUP BY ESTACION, HHMMSS' estacion1234f.csv > velocidad-por-hora.csv
 
+rm estacion*
+
+head velocidad-por-mes.csv
+head velocidad-por-ano.csv
+head velocidad-por-hora.csv
