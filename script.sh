@@ -19,7 +19,7 @@ sed 's|\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion2,\1\/2\/3|g' esta
 sed 's|\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion3,\1\/2\/3|g' estacion3c.csv > estacion3d.csv
 sed 's|\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion4,\1\/2\/3|g' estacion4c.csv > estacion4d.csv
 #unir archivos 
-cat estacion1c.csv estacion2d.csv estacion3d.csv estacion4d.csv > estacion1234.csv
+awk 'FNR==1 && NR!=1{next;}{print}' estacion1c.csv estacion2d.csv estacion3d.csv estacion4d.csv > estacion1234.csv
 sed 's|\/|-|g' estacion1234.csv > estacion1234a.csv
 #Modificar año para AA
 sed 's|-\([0-9]*\),|-0\1,|g' estacion1234a.csv > estacion1234b.csv
