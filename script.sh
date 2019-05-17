@@ -14,10 +14,10 @@ sed "1d" estacion2b.csv > estacion2c.csv
 sed "1d" estacion3b.csv > estacion3c.csv
 sed "1d" estacion4b.csv > estacion4c.csv
 #Agregar Nombre estación para cada uno de los archivos
-sed 's|\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion1,\1\/2\/3|g' estacion1b.csv > estacion1c.csv
-sed 's|\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion2,\1\/2\/3|g' estacion2c.csv > estacion2d.csv
-sed 's|\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion3,\1\/2\/3|g' estacion3c.csv > estacion3d.csv
-sed 's|\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion4,\1\/2\/3|g' estacion4c.csv > estacion4d.csv
+sed 's|\([0-9]*\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion1,\1\/2\/3|g' estacion1b.csv > estacion1c.csv
+sed 's|\([0-9]*\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion2,\1\/2\/3|g' estacion2c.csv > estacion2d.csv
+sed 's|\([0-9]*\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion3,\1\/2\/3|g' estacion3c.csv > estacion3d.csv
+sed 's|\([0-9]*\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)|estacion4,\1\/2\/3|g' estacion4c.csv > estacion4d.csv
 #unir archivos 
 awk 'FNR==1 && NR!=1{next;}{print}' estacion1c.csv estacion2d.csv estacion3d.csv estacion4d.csv > estacion1234.csv
 sed 's|\/|-|g' estacion1234.csv > estacion1234a.csv
